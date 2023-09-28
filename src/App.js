@@ -1,3 +1,5 @@
-export default function App() {
-  return <div>te būs stundu saraksts</div>;
+function App() {
+  return <div> stundu saraksts jau tagad</div>;
 }
+
+export default App;
