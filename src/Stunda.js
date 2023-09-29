@@ -1,8 +1,7 @@
-function Stunda() {
-    <>
-    <div>sports</div>
-    <Stunda></Stunda>
-    </>
-};
+function Stunda(props) {
+    return (
+            <li>{props.nosaukums}</li>
+    )
+}
 
 export default Stunda;
