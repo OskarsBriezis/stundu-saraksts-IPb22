@@ -1,13 +1,13 @@
 import Diena from "./Diena"
 
 function App() {
-  const pirmdienasStundas = [
+  const PirmdienasStundas = [
     "sports",
     "dabaszinibas",
     "Socialas zinibas un vesture",
     "Krievu valoda"
 ];
-const otrdienasStundas = [
+const OtrdienasStundas = [
   "stunda",
   "atkal stunda",
   "stunda ja",
@@ -16,11 +16,14 @@ const otrdienasStundas = [
   return (  
     <>
   <div> stundu saraksts jau tagad</div>
-  <Diena diena="Pirmdiena" stundas={pirmdienasStundas}/>
-  <Diena diena="Otrdiena" stundas={otrdienasStundas}/>
+  <Diena diena="Pirmdiena" stundas={PirmdienasStundas}/>
+  <Diena diena="Otrdiena" stundas={OtrdienasStundas}/>
   </>
   )
 }
 
 
 export default App;
+
+//.forEach() ir masīva metode, kura apskata ikkatru masīva elementu, bet neko neatgriež(nav return)
+//.map() ir masīvu metode, kura apskata ikkatru masīva elementu un atgriež jaunu masīvu(return Array)
