@@ -13,6 +13,14 @@ const OtrdienasStundas = [
   "stunda ja",
   "yes"
 ];
+const visasStundas = {
+  Pirmdiena: [
+    "sports",
+    "dabaszinibas",
+    "Socialas zinibas un vesture",
+    "Krievu valoda"
+  ]
+}
   return (  
     <>
   <div> stundu saraksts jau tagad</div>
