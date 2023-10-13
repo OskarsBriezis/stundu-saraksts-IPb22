@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "./global.css";
 
 // 1. Paņem elementu no index.html
 const noDOM = document.getElementById("root");
