@@ -1,81 +1,125 @@
-import Diena from "./Diena"
+import Diena from "./Diena";
+import { useEffect, useState } from "react";
 
 function App() {
-  const PirmdienasStundas = [
-    "sports",
-    "dabaszinibas",
-    "Socialas zinibas un vesture",
-    "Krievu valoda"
-];
-const OtrdienasStundas = [
-  "stunda",
-  "atkal stunda",
-  "stunda ja",
-  "yes"
-];
+  const [stundas, setStundas] = useState([]);
+  const [loading, setLoading] = useState(true);
+    useEffect(() => {
+      async function DataAPI() {
+        const response = await fetch(
+          "https://cheese-cake.onthewifi.com/api/lessons"
+          );
+        const data = await response.json();
+        console.log(data.IPb22);
+        const cleansedData = [
+          {
+            diena: "Pirmdiena",
+            stundas: data.IPb22[0].classes,
+          },
+          {
+            diena: "Otrdiena",
+            stundas: data.IPb22[1].classes,
+          },
+          {
+            diena: "Trešdiena",
+            stundas: data.IPb22[2].classes,
+          },
+          {
+            diena: "Ceturdiena",
+            stundas: data.IPb22[3].classes,
+          },
+          {
+            diena: "Piektdiena",
+            stundas: data.IPb22[4].classes,
+          }
+        ]
+        setStundas(cleansedData);
+        setLoading(false);
+      }
+      DataAPI();
 
-const visasStundas = [
-  {
-    diena: "Pirmdiena",
-stundas: [
-  "sports",
-    "dabaszinibas",
-    "Socialas zinibas un vesture",
-    "Krievu valoda"
-  ]
-},
-{
-  diena: "Otrdiena",
-stundas: [
-  "sgds",
-    "dabasdgdsgdsbas",
-    "Socialgsdgdsun vesture",
-    "Krigsdgsd valoda"
-  ]
-},
-{
-  diena: "Tresdiena",
-stundas: [
-  "sgdsgsdrts",
-    "dabasgsdgdsnibas",
-    "gdsgsdbas un vesture",
-    "Krievu valoda"
-  ]
-},
-{
-  diena: "Ceturdiena",
-stundas: [
-  "spgsdgsdgts",
-    "dabgdsgdsnibas",
-    "Socidsgdsgsds un vesture",
-    "gsdgdsgsdgsd valoda"
-  ]
-},
+    }, []);
 
-{
-  diena: "Piektdiena",
-stundas: [
-  "shdshdsgsdts", 
-    "dabrrefbfbhrdfbhdbas",
-    "Ssdhrfdgbdgeesdvesture",
-    "Krievu valoda"
-  ]
-},
-]
-const DienasJSX = visasStundas.map((diena, indekss) => {
-  return <Diena key={indekss} diena = {diena.diena} stundas={diena.stundas}/>
-})
-  return (  
+  const pirmdienasStundas = [
+    "Sports pie Klintas",
+    "Dabaszinības mīlu fiziku",
+    "Vēsture",
+    "🫥",
+  ];
+  const otrdienasStundas = ["Cita stunda", "Vēl stunda"];
+
+  const visasStundas = [
+    {
+      diena: "Pirmdiena",
+      stundas: [
+        "Sports pie Klintas",
+        "Dabaszinības mīlu fiziku",
+        "Vēsture",
+        "🫥",
+      ],
+    },
+    {
+      diena: "Otrdiena",
+      stundas: [
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+      ],
+    },
+    {
+      diena: "Trešdiena",
+      stundas: [
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+        "Sistēmu programmēšana",
+      ],
+    },
+    {
+      diena: "Ceturtdiena",
+      stundas: [
+        "IM done Edmunds",
+        "let me go",
+        "when will the friday come",
+        "🫥",
+      ],
+    },
+    {
+      diena: "Piektdiena",
+      stundas: [
+        "Atdot Railijam datoru stunda",
+        "Nu gan viss?",
+        "AAudzināšana",
+        "🫥",
+      ],
+    },
+  ];
+
+  // Kā visasStundas pārtais'oit par masīvu?
+  const dienasJSX = stundas.map((diena, indekss) => {
+    return <Diena key={indekss} diena={diena.diena} stundas={diena.stundas} />;
+  });
+  return (
     <>
-    
-  <div> stundu saraksts jau tagad</div>
-  <Diena diena="Pirmdiena" stundas={PirmdienasStundas}/>
-  <Diena diena="Otrdiena" stundas={OtrdienasStundas}/>
-    {DienasJSX}
-  </>
-  )
+      <div>Šīs nedēļas stunas, paldies, Matīsss</div>
+      {loading ? <p>Loading...</p> : dienasJSX}
+    </>
+  );
 }
+
 export default App;
 
-//.forEach() ir masīva metode, kura apskata ikkatru masīva elementu, bet neko neatgriež(nav return)
-//.map() ir masīvu metode, kura apskata ikkatru masīva elementu un atgriež jaunu masīvu(return Array)
+// Uztaisi divas jaunas komponentets:
+// - Diena.js
+// - Stunda.js
+
+// JS - .forEach() ir masīvu metode,
+// kura apskata ikkatru masīva elementu,
+// bet neko neatgriež (nav return)
+
+// JS - .map() ir masīvu metode,
+// kura apskata ikkatru masīva elementu
+// un atgriež jaunu masīvu (return Array)
+
+//

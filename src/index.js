@@ -10,4 +10,8 @@ const noDOM = document.getElementById("root");
 const root = ReactDOM.createRoot(noDOM);
 
 // 3. React saknē renderē pirmo komponenti (App)
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
